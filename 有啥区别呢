@@ -1,0 +1,49 @@
+# 父类Person中的init函数有没有双下划线，都是正常的
+# 有
+class Person:
+    def __init__(self , name ,gender , age , height ,weight):
+        self.name = name
+        self.gender = gender 
+        self.age = age 
+        self.height = height 
+        self.weight = weight 
+    def show(self , end = '\n'):
+        print('name:' , self.name , 'gender:' , self.gender , 'age:' , self.age ,'height:' , self.height , 'weight:' , self.weight , end = end)
+
+class Student(Person):
+    def __init__(self , name ,gender , age , height , weight , dept , classes , major ):
+        Person.__init__(self , name , gender , age , height , weight )
+        self.dept = dept 
+        self.classes = classes 
+        self.major = major 
+    def show(self):
+        Person.show(self , '\n')
+        print('dept:' , self.dept , 'calsses:' , self.classes , 'major:' , self.major  )
+
+s = Student('ann' , 'female' , 18 ,163 ,103 , 'math', '111' , 'finance')
+s.show()
+
+# 没有
+class Person:
+    def init(self , name ,gender , age , height ,weight):
+        self.name = name
+        self.gender = gender 
+        self.age = age 
+        self.height = height 
+        self.weight = weight 
+    def show(self , end = '\n'):
+        print('name:' , self.name , 'gender:' , self.gender , 'age:' , self.age ,'height:' , self.height , 'weight:' , self.weight , end = end)
+
+class Student(Person):
+    def __init__(self , name ,gender , age , height , weight , dept , classes , major ):
+        Person.init(self , name , gender , age , height , weight )
+        self.dept = dept 
+        self.classes = classes 
+        self.major = major 
+    def show(self):
+        Person.show(self , '\n')
+        print('dept:' , self.dept , 'calsses:' , self.classes , 'major:' , self.major  )
+
+s = Student('ann' , 'female' , 18 ,163 ,103 , 'math', '111' , 'finance')
+s.show()
+
